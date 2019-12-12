@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 策略类:定义具体的算法
+    // 环境类：使用
+    let performanceS = function () {
+    };
+    performanceS.prototype.calculate = function (salary) {
+        return salary * 4;
+    };
+    let performanceA = function () {
+    };
+    performanceA.prototype.calculate = function (salary) {
+        return salary * 3;
+    };
+    let performanceC = function () {
+    };
+    performanceC.prototype.calculate = function (salary) {
+        return salary * 2;
+    };
+
+    // 环境类
+    let Bonus = function () {
+        this.salary = null; // 原始工资
+        this.strategy = null; // 绩效等级对应的策略对象
+    };
+    Bonus.prototype.setSalary = function (salary) {
+        this.salary = salary; // 设置员工的原始工资
+    };
+    Bonus.prototype.setStrategy = function (strategy) {
+        this.strategy = strategy; // 设置员工绩效等级对应的策略对象
+    };
+    Bonus.prototype.getBonus = function () { // 取得奖金数额
+        return this.strategy.calculate(this.salary); // 把计算奖金的操作委托给对应的策略对象
+    };
+    let bonus = new Bonus();
+    bonus.setSalary(10000);
+    bonus.setStrategy(new performanceS()); // 设置策略对象
+    console.log(bonus.getBonus());
+    bonus.setStrategy(new performanceA()); // 设置策略对象
+    console.log(bonus.getBonus());
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <script src="Sprite.js"></script>
+</head>
+<body>
+<!--设置标签的宽高不要使用css-->
+<canvas id="canvas" width="600" height="600">
+    你的浏览器不支持canvas，请升级浏览器.浏览器不支持，显示此行文本
+</canvas>
+<script>
+    var canvas = document.getElementById('canvas'); //获得画布
+    var ctx = canvas.getContext('2d'); //注意：2d小写， 3d：webgl
+
+    canvas.width = 600; //设置标签的属性宽高
+    canvas.height = 600; //千万不要用 canvas.style.height
+    canvas.style.border = '1px solid #000';
+
+
+    var s = new Sprites({
+        x: 300,
+        y: 300,
+        w: 80,
+        h: 96,
+        fps: 5,
+        originW: 80,
+        originH: 96,
+        imgSrc: "canvas.png"
+    });
+    s.render(ctx);
+
+    let key = {
+        W: 87, S: 83, A: 65, D: 68
+    };
+
+    document.onkeydown = function (e) {
+        switch (e.keyCode) {
+            case key.W:
+                s.changeDir(0);
+                break;
+            case key.S:
+                s.changeDir(1);
+                break;
+            case key.A:
+                s.changeDir(2);
+                break;
+            case key.D:
+                s.changeDir(3);
+                break;
+        }
+    };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webgl01</title>
+    <style>
+        body {
+            font-family: "sans-serif";
+            font-size: 10px;
+        }
+
+        .background {
+            fill: #eee;
+        }
+
+        line {
+            stroke: #fff;
+        }
+
+        text.active {
+            fill: red;
+        }
+    </style>
+    <script src="js/d3.v3.js"></script>
+</head>
+<body>
+<script>
+    let margin = {top: 80, right: 0, bottom: 10, left: 80},
+        width = 720,
+        height = 720;
+
+    //  比例尺
+    let x = d3.scale.ordinal().rangeBands([0, width]);
+
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.json("miserables.json", function (miserables) {
+        let matrix = [],
+            nodes = miserables.nodes,
+            n = nodes.length;
+
+        nodes.forEach((node, i) => {
+            matrix[i] = d3.range(n).map(j => ({x: j, y: i, val: 0}))
+        });
+
+        miserables.links.forEach(function (link) {
+            matrix[link.source][link.target].val = 1; // 1表示有连接
+            matrix[link.target][link.source].val = 1;
+        });
+
+        x.domain(d3.range(n).sort((a, b) => d3.ascending(nodes[a].name, nodes[b].name)));
+
+
+        svg.append("rect")
+            .attr("class", "background")
+            .attr("width", width)
+            .attr("height", height);
+
+        let row1 = svg.selectAll(".row")
+            .data(matrix)
+            .enter()
+            .append("g")
+            .attr("class", "row")
+            .attr("transform", (d, i) => "translate(0," + x(i) + ")")
+            .each(row); // 二维数组-->一维数组
+
+        row1.append("line")
+            .attr("x2", width);
+
+        row1.append("text")
+            .attr("x", -6)
+            .attr("y", x.rangeBand() / 2)
+            .attr("dy", ".32em")
+            .attr("text-anchor", "end")
+            .text((d, i) => nodes[i].name);
+
+
+        let column = svg.selectAll(".column")
+            .data(matrix)
+            .enter()
+            .append("g")
+            .attr("class", "column")
+            .attr("transform", (d, i) => `translate(${x(i)})rotate(-90)`); // 逆时针旋转90度
+
+        column.append("line")
+            .attr("x2", -width);
+
+
+        column.append("text")
+            .attr("x", 6)
+            .attr("y", x.rangeBand() / 2)
+            .attr("dy", ".32em")
+            .attr("text-anchor", "start")
+            .text((d, i) => nodes[i].name);
+
+
+        function row(row) {
+            d3.select(this)
+                .selectAll(".cell")
+                .data(row.filter((d) => d.val))
+                .enter()
+                .append("rect")
+                .attr("class", "cell")
+                .attr("x", (d) => x(d.x))
+                .attr("width", x.rangeBand())
+                .attr("height", x.rangeBand())
+                .attr("fill", 'green')
+                .attr("fill-opacity", 0.5)
+                .on("mouseover", mouseover)
+                .on("mouseout", mouseout);
+        }
+
+        function mouseover(p) {
+            d3.selectAll(".row text").classed("active", (d, i) => i == p.y);
+            d3.selectAll(".column text").classed("active", (d, i) => i == p.x);
+        }
+
+        function mouseout() {
+            d3.selectAll("text").classed("active", false);
+        }
+    });
+</script>
+</body>
+</html>

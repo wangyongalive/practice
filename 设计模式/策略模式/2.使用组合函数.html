@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 函数改善非常有限，函数可能会越来越臃肿
+    let performanceS = function (salary) {
+        return salary * 4;
+    };
+    let performanceA = function (salary) {
+        return salary * 3;
+    };
+    let performanceB = function (salary) {
+        return salary * 2;
+    };
+    let calculateBonus = function (performanceLevel, salary) {
+        if (performanceLevel === 'S') {
+            return performanceS(salary);
+        }
+        if (performanceLevel === 'A') {
+            return performanceA(salary);
+        }
+        if (performanceLevel === 'B') {
+            return performanceB(salary);
+        }
+    };
+    calculateBonus('A', 10000) // 30000
+
+</script>
+</body>
+</html>
