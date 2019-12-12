@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="loginBtn">登录按钮</button>
+<script>
+
+    // 惰性单例指的是在需要的时候才创建对象实例,而不是页面一加载就创建。
+
+    // 缺点：违反了单一职责原则，创建对象和管理对象都放在了一起
+
+    // 闭包 + 立即执行函数
+    let createLoginLayer = (function () {
+        let div;
+        return function () {
+            if (!div) {
+                div = document.createElement('div');
+                div.innerHTML = '登录窗口';
+                div.style.display = 'none';
+                document.body.append(div);
+            }
+            return div;
+        }
+    })();
+
+    document.getElementById("loginBtn").onclick = function () {
+        let loginLayer = createLoginLayer();
+        loginLayer.style.display = 'block';
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">1111111</div>
+<script>
+    // 创建对象的方法fn被当做参数动态传入
+    let getSingle = function (fn) {
+        let result;
+        return function () {
+            return result || (result = fn.apply(this, arguments));
+        }
+    };
+
+    let bindEvent = getSingle(function () {
+        document.getElementById('div1').onclick = function () {
+            alert('click');
+        };
+        return true;
+    });
+    let render = function () {
+        console.log('开始渲染列表');
+        bindEvent();
+    };
+    render();
+    render();
+    render();
+</script>
+</body>
+</html>

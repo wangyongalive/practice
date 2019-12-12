@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     *   不透明,需要getInstance来调用
+     *
+     * **/
+
+
+    let Singleton = function (name) {
+        this.name = name;
+        this.instance = null;
+    };
+    Singleton.prototype.getName = function (name) {
+        console.log(this.name);
+    };
+    Singleton.getInstance = function (name) {
+        if (!this.instance) { // 实例已经存在
+            this.instance = new Singleton(name);
+        }
+        return this.instance;
+    };
+
+    let a = Singleton.getInstance('wy');
+    let b = Singleton.getInstance('wjy');
+    console.log(a === b);
+
+
+    let Singleton2 = function (name) {
+        this.name = name;
+    };
+    Singleton2.prototype.getName = function () {
+        console.log(this.name);
+    };
+    // 立即执行函数 + 闭包
+    Singleton2.getInstance = (function () {
+        let instance = null;
+        return function (name) {
+            if (!instance) {
+                instance = new Singleton2(name);
+            }
+            return instance;
+        }
+    })();
+
+    let a2 = Singleton2.getInstance('wy');
+    let b2 = Singleton2.getInstance('wjy');
+    console.log(a2 === b2);
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 在JavaScript开发中,经常会把全局变量当成单例来使用
+    // 避免全局污染的方式
+    // 1.命名空间
+    let namespace1 = {
+        a: function () {
+
+        },
+        b: function () {
+
+        }
+    };
+    // 2.闭包
+    // 外部无法获取私有变量，只能通过向外暴露的接口获取
+    let user = (function () {
+        // 下划线约定私有变量
+        let _name = 'sven',
+            _age = 29;
+        return {
+            getUserInfo: function () {
+                return _name + '-' + _age;
+            }
+        }
+    })();
+
+
+</script>
+</body>
+</html>
