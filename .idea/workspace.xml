@@ -27,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/设计模式/单例模式/3.JavaScript版本.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+            <state relative-caret-position="900">
+              <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -36,7 +36,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/设计模式/单例模式/4.惰性单例.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
+            <state relative-caret-position="360">
               <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
             </state>
           </provider>
@@ -45,7 +45,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/设计模式/单例模式/5.惰性单例通用版.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
+            <state relative-caret-position="360">
               <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="18" selection-end-column="6" />
             </state>
           </provider>
@@ -54,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/设计模式/单例模式/6.动态渲染列表.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+            <state relative-caret-position="600">
+              <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -331,17 +331,17 @@
       <workItem from="1575939333963" duration="10920000" />
       <workItem from="1576029632268" duration="23967000" />
       <workItem from="1576114482783" duration="13516000" />
+      <workItem from="1576149340770" duration="234000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="325118000" />
+    <option name="totallyTimeSpent" value="325352000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49817517" visible="true" weight="0.18692206" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49817517" visible="true" weight="0.18692206" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5018248" side_tool="true" weight="0.24834874" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -353,7 +353,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.47285715" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.47184986" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5006605" side_tool="true" weight="0.16733602" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -611,13 +611,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/音乐可视化/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/音乐可视化/index.html" />
     <entry file="file://$PROJECT_DIR$/社区划分/force.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4380">
@@ -649,9 +643,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/设计模式/单例模式/1.实现单例模式.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/设计模式/单例模式/1.实现单例模式.js" />
     <entry file="file://$PROJECT_DIR$/设计模式/策略模式/2.使用组合函数.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-360">
@@ -675,29 +667,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/设计模式/单例模式/3.JavaScript版本.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+        <state relative-caret-position="900">
+          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/设计模式/单例模式/4.惰性单例.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
+        <state relative-caret-position="360">
           <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/设计模式/单例模式/5.惰性单例通用版.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
+        <state relative-caret-position="360">
           <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="18" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/设计模式/单例模式/6.动态渲染列表.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        <state relative-caret-position="600">
+          <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
         </state>
       </provider>
     </entry>
