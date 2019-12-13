@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    Function.prototype.addMethod = function (name, fn) {
+        this[name] = fn;  // 在自身添加方法
+        return this;
+    };
+
+    let methods = function () {
+
+    };
+    // 链式
+    methods.addMethod('checkName', function () {
+        console.log('checkName');
+        return this;
+    }).addMethod('checkEmail', function () {
+        console.log('checkEmail');
+        return this;
+    }).addMethod('checkPassword', function () {
+        console.log('checkPassword');
+        return this;
+    });
+    // 链式
+    methods.checkName().checkEmail().checkPassword();
+
+
+</script>
+</body>
+</html>
