@@ -3,3 +3,8 @@ console.log(util.type([]));
 console.log(util.bubbleAsSort(util.createArr(10)));
 console.log(util.bubbleDeSort(util.createArr(15)));
 console.log(util.createArrRandom(util.createArr(20)));
+console.log(util.insertAsSort(util.createArrRandom(util.createArr(20))));
+console.log(util.insertDeSort(util.createArrRandom(util.createArr(20))));
+console.log(util.mult(3));
+console.log(util.mult(3, 4));
+console.log(util.mult(3));
