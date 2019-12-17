@@ -8,3 +8,4 @@ console.log(util.insertDeSort(util.createArrRandom(util.createArr(20))));
 console.log(util.mult(3));
 console.log(util.mult(3, 4));
 console.log(util.mult(3));
+console.log(util.randomColor());

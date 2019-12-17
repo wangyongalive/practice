@@ -78,6 +78,18 @@ const mult = (x, y = 1) => {
     return count;
 };
 
+
+// 返回随机颜色代码
+const randomColor = () => {
+    let letters = '0123456789ABCDEF'.split('');
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+};
+
+
 /*exports 返回的是模块函数，module.exports 返回的是模块对象本身，返回的是一个类*/
 // 一个模块文件中可以有多个exports输出，但只能有一个module.exports输出
 module.exports = {
@@ -88,6 +100,7 @@ module.exports = {
     bubbleDeSort,
     insertAsSort,
     insertDeSort,
-    mult
+    mult,
+    randomColor
 };
 
