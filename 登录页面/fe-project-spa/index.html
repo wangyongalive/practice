@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="aside">
+    <!--锚点不发送请求-->
+    <li><a href="#/">发现音乐</a></li>
+    <li><a href="#/my-music">我的音乐</a></li>
+    <li><a href="#/friend">朋友</a></li>
+</div>
+
+<div class="container" id="container">
+
+</div>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/art-template/lib/template-web.js"></script>
+<script>
+    // 注册window.onhashchange事件来监听hash(锚点)的改变
+    // url地址发生改变，改变之后解析hash中的路径，然后根据不同的路径标识渲染不同的页面
+    // 到容器中
+    window.onhashchange = function () {
+        let hash = window.location.hash.substr(1);
+        if (hash === '/') {
+            $.get('./find-music.html', data => {
+                $('#container').html(data);
+            })
+        } else if (hash === '/my-music') {
+            $.get('./my-music.html', data => {
+                $('#container').html(data);
+            })
+        } else if (hash === '/friend') {
+            $.get('./friend.html', data => {
+                $('#container').html(data);
+            })
+        }
+    }
+</script>
+</body>
+</html>
