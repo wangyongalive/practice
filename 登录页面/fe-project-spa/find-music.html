@@ -5,6 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-<div>发现音乐</div>
+<div>
+    发现音乐
+    <hr>
+    <ul id="todos-container"></ul>
+</div>
+<script id="tpl-todos" type="text/template">
+    {{each todos}}
+    <li>{{$value.title}}</li>
+    {{/each}}
+</script>
+<script>
+    $.get('http://127.0.0.1:3000/todos', data => {
+        let htmlStr = template('tpl-todos', {
+            todos: data
+        });
+        $('#todos-container').html(htmlStr);
+    });
+
+</script>
 </body>
 </html>
