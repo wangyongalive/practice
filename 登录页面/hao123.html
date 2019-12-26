@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <select v-model="email">
+        <option v-for="item in emails" :value="item.value">
+            <template v-if="item.value =='yeah'">@{{item.value}}.net</template>
+            <template v-if="item.value !='yeah'">@{{item.value}}.com</template>
+        </option>
+    </select>
+    <span>Selected: {{ email }}</span>
+</div>
+<script src="vue.js"></script>
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            email: 'sina',
+            emails: [
+                {value: '123'},
+                {value: '163'},
+                {value: 'sina'},
+                {value: '126'},
+                {value: 'yeah'},
+                {value: 'sohu'}
+            ]
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #efefef;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #app {
+            margin: 100px auto;
+            width: 600px; /*定宽*/
+            height: 400px;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 30px 80px;
+            position: relative; /*子绝父相*/
+        }
+
+        #app input {
+            height: 40px;
+            line-height: 40px;
+            padding-left: 10px;
+            width: 300px;
+        }
+
+        #app ul {
+            position: absolute;
+            width: 310px;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px #efefef;
+            left: 134px;
+        }
+
+        #app ul li {
+            padding-left: 10px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        #app ul li:hover { /*悬浮高亮*/
+            background: #efefef;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div>
+        <span>账户名</span>
+        <input type="text" v-model="text" placeholder="请输入邮箱">
+    </div>
+    <ul v-if="text">
+        <li v-for="item in email">{{dealText}}@{{item}}.com</li>
+    </ul>
+</div>
+<script src="vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            text: '',
+            email: ['qq', '163', '126', '189', 'sina', 'hotmail', 'gmail', 'sohu', '21cn']
+        },
+        computed: {
+            dealText: function () {
+                return this.text.includes('@') ? this.text.slice(0, this.text.indexOf('@')) : this.text;
+            }
+        }
+    })
+</script>
+</body>
+</html>

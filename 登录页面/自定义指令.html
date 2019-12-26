@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户名校验</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="userName" lazy>
+    <p v-check-username="userName"></p>
+    {{userName}}
+</div>
+<script src="vue.js"></script>
+<script>
+
+    // 输入校验指令
+    Vue.directive('check-username', {
+        bind: function (el, binding) {
+            console.log('bind', arguments);
+        },
+        update: function (el, binding) {
+            let length = binding.value.length;
+            if (length > 20 || length < 4) {
+                el.innerText = "用户名的长度为4-20";
+                el.style.color = "red";
+            }else {
+                el.innerText = "";
+            }
+        },
+        unbind: function () {
+            console.log('unbind', arguments);
+            console.log('unbind', this);
+        }
+    })
+
+    let app = new Vue({
+        el: '#app',
+        data: {
+            userName: ""
+        }
+    });
+
+</script>
+</body>
+</html>
