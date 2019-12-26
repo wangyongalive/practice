@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--html和js解耦-->
+<div id="app">
+    <input type="number" v-model="number">
+    <!--函数比较简单  直接使用内联写法-->
+    <button @click="number++">+1</button>
+    <button @click="handleClick">+2</button>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // Jquery 提高DOM操作的效率
+    // Vue极大的解放了DOM操作
+    const app = new Vue({
+        el: "#app",
+        data: {
+            number: 1
+        },
+        methods: {
+            handleClick: function () {
+                this.number += 2;
+            }
+        }
+    })
+</script>
+</body>
+</html>

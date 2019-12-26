@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*初始化css 开始*/
+        html, body {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /*初始化css 结束*/
+
+        li {
+            list-style: none;
+        }
+
+
+        #app {
+            margin: 10px;
+        }
+        .close{
+            color: #ff0000;
+            background:none;
+            border: none;
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>Todo</h1>
+    <p>{{todos.filter(item=>!item.done).length}} of {{todos.length}}</p>
+    <ul>
+        <li v-for="(todo,index) in todos" :key="todo.id">
+            <input type="checkbox" v-model="todo.done">
+            <span :class="{done:todo.done}">{{todo.title}}</span>
+            <button @click="removeTodo(index)" class="close">X</button>
+        </li>
+    </ul>
+    <input type="text" v-model="msg" @keydown.enter="addClick">
+    <button @click="addClick">Add</button>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            todos: [{
+                id: 1,
+                title: '吃饭',
+                done: false
+            }, {
+                id: 2,
+                title: '睡觉',
+                done: true
+            }, {
+                id: 3,
+                title: '敲代码',
+                done: false
+            }, {
+                id: 4,
+                title: '扫地',
+                done: false
+            }],
+            msg: ''
+        },
+        methods: {
+            addClick() {
+                let todos = this.todos;
+                let todo = {
+                    id: todos[todos.length - 1].id + 1,
+                    title: this.msg,
+                    done: false
+                };
+                this.todos.push(todo);
+            },
+            removeTodo(index) {
+                this.todos.splice(index, 1);
+            }
+        }
+    })
+</script>
+</body>
+</html>
