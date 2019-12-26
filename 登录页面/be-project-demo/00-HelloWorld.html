@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--被vue管理的dom节点-->
+<div id="app">
+    <h1>{{message}}</h1>
+    <div>
+        <span>{{message}}</span>
+    </div>
+    <input type="text" v-model="message">
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // Vue可以理解为高级的模板引擎
+    const app = new Vue({
+        el: "#app",
+        data: { /*响应式数据 数据驱动视图*/
+            message: "Hello Vue.js"
+        }
+    });
+
+</script>
+</body>
+</html>
