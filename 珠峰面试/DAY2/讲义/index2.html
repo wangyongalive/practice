@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+</head>
+
+<body>
+<!-- IMPORT JS -->
+<script>
+    let obj = {
+        a: 100,
+        b: [10, 20, 30],
+        c: {
+            x: 10
+        },
+        d: /^\d+$/
+    };
+
+    let obj2 = {};
+    for (let key in obj) {
+        obj2[key] = obj[key];
+    }
+
+    // let obj2 = JSON.parse(JSON.stringify(obj)); //=>弊端  函数、正则
+
+
+    // 深度拷贝
+    function deepClone(source) {
+        const targetObj = source.constructor === Array ? [] : {}; // 判断复制的目标是数组还是对象
+        for (let keys in source) { // 遍历目标
+            if (source.hasOwnProperty(keys)) {
+                if (source[keys] && typeof source[keys] === 'object') { // 如果值是对象，就递归一下
+                    targetObj[keys] = source[keys].constructor === Array ? [] : {};
+                    targetObj[keys] = deepClone(source[keys]);
+                } else { // 如果不是，就直接赋值
+                    targetObj[keys] = source[keys];
+                }
+            }
+        }
+        return targetObj;
+    }
+
+    let source = {
+        'abc': 11, 'tool': function () {
+            console.log('233');
+        }
+    };
+    let target = deepClone(source);
+    console.log(target === source); // false
+
+</script>
+</body>
+
+</html>
