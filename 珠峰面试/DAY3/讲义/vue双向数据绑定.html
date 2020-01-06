@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+姓名：<span id="spanName"></span>
+<br>
+<input type="text" id="inpName">
+<script>
+    // es5 Object.defineProperty
+    /*1.缺点: 需要拷贝一份数据
+      2.需要单独设置每个属性值
+    * */
+    // let obj = {
+    //     name: ''
+    // };
+    // let newObj = {
+    //     ...obj
+    // };
+    // Object.defineProperty(obj, 'name', {
+    //     get() {
+    //         return newObj.name;
+    //     },
+    //     set(val) {
+    //         newObj.name = val;
+    //         observe();
+    //     }
+    // });
+    //
+    // function observe() {
+    //     spanName.innerHTML = newObj.name;
+    // }
+    //
+    // inpName.oninput = function () {
+    //     obj.name = this.value;
+    // };
+
+    // es6 proxy
+    let obj = new Proxy({}, {
+        get(target, prop) {
+            return target[prop];
+        },
+        set(target, prop, value) {
+            target[prop] = value;
+            observe(); // 监听
+        }
+    });
+
+    function observe() {
+        spanName.innerHTML = obj.name;
+    }
+
+    inpName.oninput = function () {
+        obj.name = this.value;
+    };
+</script>
 </body>
 </html>

@@ -1,56 +1,152 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-	<title>珠峰培训 - 微信：18310612838</title>
-	<!-- IMPORT CSS -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
 </head>
-
 <body>
-	<!-- IMPORT JS -->
-	<script>
-		// TO-STRING
-		/* var a = {
-			i: 0,
-			toString() {
-				return ++this.i;
-			}
-		};
-		if (a == 1 && a == 2 && a == 3) {
-			console.log('条件成立');
-		} */
+<script>
 
-		/* var a = [1, 2, 3];
-		a.toString = a.shift;
-		if (a == 1 && a == 2 && a == 3) {
-			console.log('条件成立');
-		} */
+    // /*第1题 开始*/
+    //
+    // function A() {
+    //     console.log(1);
+    // }
+    //
+    // function Func() {
+    //     /*虽然A重写了，但Func.A还是指向 console.log(1)*/
+    //     A = function () {
+    //         console.log(2);
+    //     };
+    //     return this;
+    // }
+    //
+    // Func.A = A;
+    // Func.prototype = {
+    //     A: () => {
+    //         console.log(3);
+    //     }
+    // };
+    //
+    //
+    // A(); // 1
+    // Func.A(); // 1
+    // Func().A(); // 2
+    // new Func.A(); // 1   new (Fun.A())
+    // new Func().A(); // 3  (new Func()).A()
+    // // new new Func().A(); // 报错，箭头函数不能使用关键字new
+    //
+    // /*第1题 结束*/
 
 
-		/* 数据劫持实现 */
-		/* var i = 0;
-		Object.defineProperty(window, 'a', {
-			get() {
-				return ++i;
-			}
-		});
-		if (a == 1 && a == 2 && a == 3) {
-			console.log('条件成立');
-		} */
+    /*第2题 开始*/
+    // var x = 2; // 4 16
+    // var y = {
+    //     x: 3, // 15
+    //     z: (function (x) {
+    //         this.x *= x; // this 指向window
+    //         x += 2;
+    //         return function (n) { // 返回一个函数
+    //             this.x *= n;
+    //             x += 3;
+    //             console.log(x);
+    //         }
+    //     })(x) // 全局x:2
+    // };
+    // var m = y.z;
+    // m(4); // 7
+    // y.z(5); // 10
+    // console.log(x, y.x); // 16 15
+    /*第2题 结束*/
 
-		/* var a = 0;
-		Object.defineProperty(window, 'a', {
-			get() {
-				// Uncaught TypeError: Cannot redefine property: a
-				// defineProperty GETER拦截器中不能再次获取当前属性
-				return ++a;
-			}
-		});
-		console.log(a); */
-	</script>
+    /*第3题 开始*/
+
+    // toString()
+    /* var a = {
+        i: 0,
+        toString() {
+            return ++this.i;
+        }
+    };
+    if (a == 1 && a == 2 && a == 3) {
+        console.log('条件成立');
+    } */
+
+    /* var a = [1, 2, 3];
+    a.toString = a.shift;
+    if (a == 1 && a == 2 && a == 3) {
+        console.log('条件成立');
+    } */
+
+
+    /* 数据劫持实现 */
+    // var i = 0;
+    // Object.defineProperty(window, 'a', {
+    //     get() {
+    //         return ++i;
+    //     }
+    // });
+    // if (a == 1 && a == 2 && a == 3) {
+    //     console.log('条件成立');
+    // }
+
+    /* var a = 0;
+    Object.defineProperty(window, 'a', {
+        get() {
+            // Uncaught TypeError: Cannot redefine property: a
+            // defineProperty get拦截器中不能再次获取当前属性
+            return ++a;
+        }
+    });
+    console.log(a); */
+    /*第3题 结束*/
+
+
+    /*第4题 开始*/
+    // var x = 0,
+    //     y = 1;
+    //
+    // function fn() {
+    //     x += 2;
+    //     fn = function (y) {
+    //         console.log(y + (--x));
+    //     };
+    //     console.log(x, y);
+    // }
+    //
+    // fn(3); // 2 1
+    // fn(4); // 5
+    // console.log(x, y); // 1 1
+    /*第4题 结束*/
+
+    /*第5题 开始*/
+    // setTimeout(() => {
+    //     console.log(1);
+    // }, 20);
+    // console.log(2);
+    // setTimeout(() => {
+    //     console.log(3);
+    // }, 10);
+    // console.log(4);
+    // console.time('AA');
+    // // 如果有for循环则是3 1 6 8，
+    // // 没有则是6 3 8 1
+    // // for (let i = 0; i < 90000000; i++) {
+    // //     // do soming
+    // //     // 3 1 6 8
+    // // }
+    // console.timeEnd('AA'); //=>AA: 79ms 左右
+    // console.log(5);
+    // setTimeout(() => {
+    //     console.log(6);
+    // }, 8);
+    // console.log(7);
+    // setTimeout(() => {
+    //     console.log(8);
+    // }, 15);
+    // console.log(9);
+    /*第5题 结束*/
+</script>
 </body>
-
 </html>
