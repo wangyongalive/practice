@@ -2,33 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
 </head>
 <body>
 <script>
-    function setInterval(callback, interval) {
-        let timer;
-        const now = Date.now;
-        let startTime = now();
-        let endTime = startTime;
-        const loop = () => {
-            timer = window.requestAnimationFrame(loop);
-            endTime = now();
-            if (endTime - startTime >= interval) {
-                startTime = endTime = now();
-                callback(timer);
-            }
-        }
-        timer = window.requestAnimationFrame(loop);
-        return timer;
-    }
+    // 词频统计
+    _.reduceByKey = function (tuples, reduceCallback) {
+        const grouped = _.groupBy(tuples, function (tuple) {
+            return tuple[0];
+        });
+        return _.toPairs(_.mapValues(grouped, function (tuples) {
+            return _.chain(tuples)
+                .map(function (tuple) {
+                    return tuple[1]
+                })
+                .reduce(reduceCallback)
+                .value();
+        }))
+    };
 
-    let a = 0;
-    setInterval(timer => {
-        console.log(1);
-        a++;
-        if (a === 3) cancelAnimationFrame(timer);
-    }, 1000);
+    const originalText = `Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+    associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+    rights to use, copy, modify, merge, publish, distribute, sublicense, and sell copies of the Software, and to permit persons
+    to whom the Software is furnished to do so, subject to the following conditions:
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+   OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+   LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+   IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`;
+    const words = originalText.toLowerCase().match(/\w+/g);
+    const tuples = words.map(function (word) {
+        return [word, 1]
+    });
+    const wordCountResult = _.reduceByKey(tuples, function (left, right) {
+        return left + right
+    });
+    console.log(wordCountResult); //=> [["permission", 2], ["is", 4], ["hereby", 1], ["granted", 1], ["free", 1], …]
+
+    // 排序
+    const sorted = wordCountResult.sort(function (leftTuple, rightTuple) {
+        return rightTuple[1] - leftTuple[1]
+    });
+    console.log(sorted);
+
 </script>
+</body>
 </body>
 </html>
