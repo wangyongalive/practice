@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BFC不与float重叠</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #layout {
+            background: red;
+        }
+
+        #layout .left {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+
+        #layout .right {
+            height: 110px;
+            background: #ccc;
+            overflow: hidden; /*BFC不与float重叠*/
+        }
+    </style>
+</head>
+<body>
+<section id="layout">
+    <div class="left"></div>
+    <div class="right"></div>
+</section>
+</body>
+</html>

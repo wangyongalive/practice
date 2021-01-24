@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链</title>
+</head>
+<body>
+<script>
+    // 第一种方式：字面量
+    // 从结果上看这两种算是一类，只是写法不一样
+    var o1 = {name: 'o1'}; // 字面量对象--默认这个对象原型链指向Object
+    var o2 = new Object({name: 'o2'}); // 通过new Object声明的一个对象
+    console.log(o1); // {name: "o1"}
+    console.log(o2); // {name: "o2"}
+
+    // 第二种方式：通过构造函数
+    // 使用显式构造函数创建对象
+    var M = function (name) {
+        this.name = name;
+    };
+    var o3 = new M('o3');
+    console.log(o3); //  {name: "o3"}
+    console.log(M.prototype.constructor === M);  // true
+    console.log(o3.__proto__ === M.prototype); //  true
+    console.log(o3 instanceof M); // true
+    console.log(o3.__proto__.__proto__ === Object.prototype); //  true
+    console.log(o3 instanceof Object);//  true
+    console.log(M.__proto__ === Function.prototype); // true  M的构造函数式Function，M是Function构造函数的实例
+    // constructor
+    o3.__proto__.constructor === M;// true;o3是M这个构造函数直接生成的实例对象
+    o3.__proto__.constructor === Object; // false
+
+
+    // 第三种方式：Object.create()
+    // Object.create方法是把参数中这个对象作为一个新对象的原型对象赋给o4的，
+    // o4本身不具备这个属性的，通过原型链来连接这个原型对象的。（所以o4对象本身没有
+    // name这个属性，只能通过原型链来找name属性。）
+    var P = {name: 'p'};
+    var o4 = Object.create(P);
+    console.log(o4); // Object{} //空对象  但是o4.name-->"p"
+    console.log(o4.__proto__ === P); // true
+
+    M.prototype.say = function () {
+        console.log('say hi');
+    };
+    var o5 = new M("o5");
+    console.log(o5);
+</script>
+</body>
+</html>

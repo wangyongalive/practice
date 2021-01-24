@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清除浮动</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #float {
+            background: red;
+            overflow: hidden; /*清除浮动*/
+        }
+
+        #float .float {
+            float: left;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<!--BFC  子元素即使是float也会参与高度计算-->
+<section id="float">
+    <div class="float">
+        我是浮动元素
+    </div>
+</section>
+</body>
+</html>

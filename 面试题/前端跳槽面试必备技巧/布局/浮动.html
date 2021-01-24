@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Layout</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .layout article div {
+            min-height: 100px;
+        }
+
+        .layout.float .left {
+            float: left;
+            width: 300px;
+            background: red;
+            overflow: hidden;
+        }
+
+        .layout.float .right {
+            float: right;
+            width: 300px;
+            background: blue;
+            overflow: hidden;
+        }
+
+        .layout.float .center {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<!--文本元素会环绕在浮动元素周围-->
+<section class="layout float">
+    <article class="left-right-center">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">
+            <h1>浮动解决方案</h1>
+            1.这是三栏布局中间部分
+            2.这是三栏布局中间部分
+            <!--无法使用-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+        </div>
+    </article>
+</section>
+</body>
+</html>

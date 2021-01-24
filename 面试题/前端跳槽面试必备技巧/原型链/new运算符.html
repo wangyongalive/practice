@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>new运算符</title>
+</head>
+<body>
+<script>
+    var new2 = function (func) {
+        //1.创建一个空对象，这个对象要继承这个构造函数的原型对象（空对象要关联构造函数的原型对象；）
+        var o = Object.create(func.prototype);
+        //2.执行构造函数
+        var k = func.call(o);//call用来转移上下文（this），把这个上下文转成o对象
+        //3.判断构造函数的运行结果是不是对象类型
+        if (typeof k === 'object') {
+            return k;
+        } else {
+            return o;
+        }
+    };
+
+    var M = function (name) {
+        this.name = name;
+    };
+
+    var o6 = new2(M);
+    console.log(o6 instanceof M);
+    console.log(o6 instanceof Object); //true
+    console.log(o6.__proto__.constructor === M); //true
+
+</script>
+</body>
+</html>

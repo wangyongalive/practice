@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layout</title>
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .layout article > div {
+            min-height: 100px;
+        }
+
+
+        .layout.grid .left-center-right {
+            width: 100%; /*100%铺开*/
+            display: grid;
+            grid-template-rows: 100px;
+            grid-template-columns: 300px auto 300px;
+        }
+
+
+        .layout.grid .left {
+            background: red;
+        }
+
+        .layout.grid .center {
+            background: yellow;
+        }
+
+        .layout.grid .right {
+            background: blue;
+        }
+
+    </style>
+</head>
+<body>
+<section class="layout grid">
+    <article class="left-center-right">
+        <div class="left"></div>
+        <div class="center">
+            <h2>网格布局解决方案</h2>
+            1.这是三栏布局网格布局中间部分
+            2.这是三栏布局网格布局中间部分
+
+            <!--高度未知的情况下,不可以使用-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+        </div>
+        <div class="right"></div>
+    </article>
+</section>
+</body>
+</html>

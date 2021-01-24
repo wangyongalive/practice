@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layout</title>
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .layout article > div {
+            min-height: 100px;
+        }
+
+
+        .layout.flex .left-center-right {
+            display: flex;
+        }
+
+        .layout.flex .left {
+            width: 300px;
+            background: red;
+        }
+
+        .layout.flex .center {
+            flex: 1; /*自适应关键*/
+            background: yellow;
+        }
+
+        .layout.flex .right {
+            width: 300px;
+            background: blue;
+        }
+
+    </style>
+</head>
+<body>
+<section class="layout flex">
+    <article class="left-center-right">
+        <div class="left"></div>
+        <div class="center">
+            <h2>flex解决方案</h2>
+            1.这是三栏布局flex中间部分
+            2.这是三栏布局flex中间部分
+
+            <!--高度未知的情况下,可以使用-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+            <!--<p>增加高度</p>-->
+        </div>
+        <div class="right"></div>
+    </article>
+</section>
+</body>
+</html>

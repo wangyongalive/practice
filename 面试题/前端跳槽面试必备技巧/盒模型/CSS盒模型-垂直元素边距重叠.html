@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS盒模型-垂直元素</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #margin {
+            background: pink;
+            overflow: hidden;
+        }
+
+        #margin p {
+            margin: 5px auto 10px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<section id="margin">
+    <p>1</p>
+    <!--消除上下文的边距重叠  在父级元素添创建BFC overflow:hidden-->
+    <div style=" overflow:hidden">
+        <p>2</p>
+    </div>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+</section>
+</body>
+</html>

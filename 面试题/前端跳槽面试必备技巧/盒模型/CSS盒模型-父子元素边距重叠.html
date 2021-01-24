@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS盒模型-父子元素</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #sec {
+            background: blue;
+            overflow: hidden; /*创建BFC后(块级格式化上下文)  高度由100变为110*/
+        }
+
+        .child {
+            height: 100px;
+            margin-top: 10px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<section id="sec">
+    <article class="child"></article>
+</section>
+</body>
+</html>
